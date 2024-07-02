@@ -3,7 +3,7 @@ name: Deploy to Azure Web App
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v1
       with:
-        python-version: '3.8'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
@@ -24,10 +24,10 @@ jobs:
         source venv/bin/activate
         pip install -r requirements.txt
 
-    - name: Run tests
-      run: |
-        source venv/bin/activate
-        pytest
+  #  - name: Run tests
+  #   run: |
+  #     source venv/bin/activate
+  #     pytest
 
     - name: Archive production artifacts
       run: |

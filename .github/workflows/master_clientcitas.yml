@@ -56,7 +56,7 @@ jobs:
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
-        id: deploy-to-gomedisysapp
+        id: deploy-to-gomedisys
         with:
           app-name: 'Clientcitas'
           slot-name: 'Production'

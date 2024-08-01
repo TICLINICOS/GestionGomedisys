@@ -18,7 +18,6 @@ URL_BASE_GOMEDISYS = config("URL_BASE_GOMEDISYS")
 
 
 async def validate_patients(tipo_documento: str, numero_documento: str):
-    
 
     try:
         tokenGomedisys = await getTokenGomedisys_service.get_token_gomedisys()

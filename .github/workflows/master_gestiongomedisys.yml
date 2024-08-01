@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clean workspace
-        run: git clean -fdx
-
       - name: Checkout repository
         uses: actions/checkout@v4
 

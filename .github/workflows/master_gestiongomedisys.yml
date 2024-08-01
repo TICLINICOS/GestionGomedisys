@@ -1,7 +1,6 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 # More info on Python, GitHub Actions, and Azure App Service: https://aka.ms/python-webapps-actions
-
 name: Build and deploy Python app to Azure Web App - Gestiongomedisys
 
 on:
@@ -15,10 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Clean workspace
+        run: git clean -fdx
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python version
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
@@ -31,34 +34,21 @@ jobs:
         run: pip install -r requirements.txt
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
+      # - name: Run tests
+      #   run: |
+      #     source venv/bin/activate
+      #     pytest
 
       - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
+        run: |
+          zip -r release.zip ./* -x venv/\*
 
-      - name: Delete Old Artifacts
-        uses: actions/github-script@v6
-        id: artifact
-        with:
-          script: |
-            const res = await github.rest.actions.listArtifactsForRepo({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            })
-            res.data.artifacts
-              .forEach(({ id }) => {
-                github.rest.actions.deleteArtifact({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  artifact_id: id,
-                })
-              })
       - name: Upload artifact for deployment jobs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-app
-          path: |
-            release.zip
-            !venv/
+          path: release.zip
+            
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -68,16 +58,15 @@ jobs:
     
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: python-app
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'Gestiongomedisys'

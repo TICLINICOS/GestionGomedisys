@@ -76,7 +76,7 @@ if __name__ == "__main__":
 
     # Get the configuration from environment variables or .env file
     host = config("HOST", default="127.0.0.1")
-    port = config("PORT", default=8000, cast=int)
+    port = config("PORT", default=5000, cast=int)
 
     # Run the application using uvicorn
     uvicorn.run("main:app", host=host, port=port, reload=True)

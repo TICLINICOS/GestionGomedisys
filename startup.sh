@@ -1,4 +1,5 @@
 #archivo autoejecutado por el app service en azure
+cd /home/site/wwwroot
 python3 -m venv CargueMasivoGomedisys
 source CargueMasivoGomedisys/bin/activate
 pip install -r requirements.txt

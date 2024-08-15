@@ -3,7 +3,7 @@
 python3 -m venv CargueMasivoGomedisys
 source CargueMasivoGomedisys/bin/activate
 pip install -r requirements.txt
-gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8181 main:app
+gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8080 main:app
 
 #gunicorn -w 4 -k uvicorn.workers.UvicornWorker main:app
 

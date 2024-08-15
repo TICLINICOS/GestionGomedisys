@@ -87,4 +87,4 @@ async def create_patient_gomedisys():
             #print("Saltar a otro usuario")
             continue
 
-    return JSONResponse(content={"Respuestas Carga Masiva": respuestasServicio, "Pacientes no creados": patientsFound})
+    return JSONResponse(content={"Respuestas Carga Masiva": respuestasServicio, "Pacientes no creados porque se encontraron en la base de datos": patientsFound})

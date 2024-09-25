@@ -12,9 +12,10 @@ from decouple import config
 # Controller
 async def obtener_datos_excel():
 
-    ruta_archivo_creacion = config("RUTA_ARCHIVO_PACIENTES")
+    ruta_archivo_creacion = config("RUTA_ARCHIVO_CREACION_PACIENTES")
 
     try:
+        print("RUTA_ARCHIVO_PACIENTES:" + ruta_archivo_creacion)
         df = pd.read_excel(ruta_archivo_creacion)
     except Exception as e:
         print(f"No se pudo leer el archivo Excel: {e}")

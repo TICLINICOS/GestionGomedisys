@@ -150,9 +150,10 @@ async def create_body_request(paciente_data):
             ptPoliticalDivision_dict.get(paciente_data["LUGARNACIMIENTO"], "")
         )
         #print(ptPoliticalDivision_HomeAddress.get(normalize_string(paciente_data["CIUDAD"]), ""))
-        idHomeAddressPlace = str(
+        
+        """idHomeAddressPlace = str(
             ptPoliticalDivision_dict.get(normalize_string(paciente_data["CIUDAD"]), "")#["SEDEASIGNACION"], "")
-        )
+        )"""
         id_office = str(
             offices_dict.get("CLINICOS IPS SEDE "+ paciente_data["SEDEASIGNACION"], "")
         )
@@ -178,7 +179,7 @@ async def create_body_request(paciente_data):
             "idOffice": id_office,
             "telecom": str(paciente_data.get("FIJO", "")).split(".")[0] or str(paciente_data.get("CELULAR", "")).split(".")[0],
             "homeAddress": paciente_data.get("DIRECCIONCASA", "")+" "+ paciente_data.get("COMPLEMENTODIRECCION", ""),
-            "idHomeAddressPlace": idHomeAddressPlace,
+            "idHomeAddressPlace": paciente_data["CIUDAD"],
             "email": paciente_data.get("EMAIL", ""),
             "isSMSEnable": "1",
             "isEmailEnable": "1" if paciente_data.get("EMAIL") else "0",

@@ -179,7 +179,7 @@ async def create_body_request(paciente_data):
             "idOffice": id_office,
             "telecom": str(paciente_data.get("FIJO", "")).split(".")[0] or str(paciente_data.get("CELULAR", "")).split(".")[0],
             "homeAddress": paciente_data.get("DIRECCIONCASA", "")+" "+ paciente_data.get("COMPLEMENTODIRECCION", ""),
-            "idHomeAddressPlace": paciente_data["CIUDAD"],
+            "idHomeAddressPlace": paciente_data["CIUDAD"],#idHomeAddressPlace
             "email": paciente_data.get("EMAIL", ""),
             "isSMSEnable": "1",
             "isEmailEnable": "1" if paciente_data.get("EMAIL") else "0",

@@ -3,7 +3,8 @@
 Created on Thursday May 16 2024
 @author: Sebastian Suarez
 """
-"""DESCOMENTAR PARA HACER LA PRUEBA UNITARIA
+"""DESCOMENTAR PARA HACER LA PRUEBA UNITARIA"""
+"""
 from fastapi import FastAPI, APIRouter
 from app.CreacionMasivaPacientes.controllers.validatePatients_controller import (
     validate_patients
@@ -16,13 +17,15 @@ router = APIRouter(prefix="/CreacionPacientes")
 @router.post("/validarPaciente")
 async def get_patient_info_route():
     tipo_documento = "CC"
-    numero_documento = "3226469"
+    numero_documento = "23582375"
     json_data = await validate_patients(tipo_documento=tipo_documento, numero_documento=numero_documento)
 
     if json_data:
         return json_data
     else:
-        return {"error": "No se pudo obtener la informacion del Paciente en Gomedisys."}"""
+        return {"error": "No se pudo obtener la informacion del Paciente en Gomedisys."}
+
+"""
 
 
 from fastapi import APIRouter

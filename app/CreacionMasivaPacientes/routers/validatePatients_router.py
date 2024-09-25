@@ -67,7 +67,7 @@ async def get_patient_info_route():
         )
 
         # Verificar si el paciente no fue encontrado (comparar con el mensaje de error esperado)
-        if validar_Paciente == "{\"CodError\":400,\"DescError\":\"Paciente no encontrado\"}":
+        if validar_Paciente == "{\"CodError\":400,\"DescError\":\"Paciente no encontrado\"}" or validar_Paciente == "{\"CodError\":400,\"DescError\":\"No se encontraron registros para el criterio de búsqueda\"}":
             patientsNotFound.append({
                 "tipo_documento": paciente_data["TIPODOCUMENTO"],
                 "numero_documento": paciente_data["DOCUMENTO"],
@@ -83,5 +83,5 @@ async def get_patient_info_route():
     # Devolver la información de los pacientes encontrados y no encontrados
     return {
         "patients_found": patientsFound if patientsFound else "No se encontraron pacientes.",
-        "patients_not_found": patientsNotFound if patientsNotFound else "Todos los pacientes fueron encontrados."
+        "patients_not_found": patientsNotFound if patientsNotFound else "!Todos los pacientes fueron encontrados."
     }

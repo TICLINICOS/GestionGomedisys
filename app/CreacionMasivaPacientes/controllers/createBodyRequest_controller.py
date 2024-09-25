@@ -15,7 +15,7 @@ from app.CreacionMasivaPacientes.controllers.getInfoExcel_controller import (
 from app.Services.readListJSON import leer_json, normalize_string
 
 
-KEY_GOMEDISYS_TEST = config("KEY_GOMEDISYS_TEST")
+KEY_GOMEDISYS_PROD = config("KEY_GOMEDISYS_PROD")
 LIST_ptTypeDocument = config("LIST_ptTypeDocument")
 LIST_ptAdministrativeSex = config("LIST_ptAdministrativeSex")
 LIST_ptGenderIdentity = config("LIST_ptGenderIdentity")
@@ -160,7 +160,7 @@ async def create_body_request(paciente_data):
 
         # Construir el cuerpo del request para el paciente
         paciente_body = {
-            "keyWS": KEY_GOMEDISYS_TEST,
+            "keyWS": KEY_GOMEDISYS_PROD,
             "idDocumentType": id_documento,
             "documentNumber": str(paciente_data["DOCUMENTO"]),
             "firstGivenName": paciente_data["PRIMERNOMBRE"],

@@ -20,7 +20,7 @@ async def obtener_listas_gomedisys():
 
     # Obtener variables de entorno
     URL_BASE_GOMEDISYS = config("URL_BASE_GOMEDISYS")
-    KEY_GOMEDISYS_TEST = config("KEY_GOMEDISYS_TEST")
+    KEY_GOMEDISYS_PROD = config("KEY_GOMEDISYS_PROD")
     RUTA_LISTADOS_GENERALES_CREACION_PACIENTES = config(
         "RUTA_LISTADOS_GENERALES_CREACION_PACIENTES"
     )
@@ -52,7 +52,7 @@ async def obtener_listas_gomedisys():
         identifier = identifier_info["Identifier"]
 
         # Obtener las listas de Gomedisys
-        URL_LISTA = f"{URL_BASE_GOMEDISYS}/Appointment/GetListsForAppointments/{identifier}/{KEY_GOMEDISYS_TEST}"
+        URL_LISTA = f"{URL_BASE_GOMEDISYS}/Appointment/GetListsForAppointments/{identifier}/{KEY_GOMEDISYS_PROD}"
         #print("Procesando la lista de Gomedisys...", URL_LISTA)
         headers = {"Authorization": f"Bearer {tokenGomedisys}"}
 

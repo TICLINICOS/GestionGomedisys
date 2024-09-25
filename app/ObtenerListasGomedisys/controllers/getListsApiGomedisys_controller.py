@@ -18,7 +18,7 @@ async def obtener_listas_gomedisys_API():
 
     # Obtener variables de entorno
     URL_BASE_GOMEDISYS = config("URL_BASE_GOMEDISYS")
-    KEY_GOMEDISYS_TEST = config("KEY_GOMEDISYS_TEST")
+    KEY_GOMEDISYS_PROD = config("KEY_GOMEDISYS_PROD")
     RUTA_LISTADOS_PRINCIPALES_GOMEDISYS_API = config(
         "RUTA_LISTADOS_PRINCIPALES_GOMEDISYS_API"
     )
@@ -71,7 +71,7 @@ async def obtener_listas_gomedisys_API():
         identifier = identifier_info["Identifier"]
 
         # Obtener las listas de Gomedisys
-        URL_LISTA = f"{URL_BASE_GOMEDISYS}/Appointment/GetListsForAppointments/{identifier}/{KEY_GOMEDISYS_TEST}"
+        URL_LISTA = f"{URL_BASE_GOMEDISYS}/Appointment/GetListsForAppointments/{identifier}/{KEY_GOMEDISYS_PROD}"
         headers = {"Authorization": f"Bearer {tokenGomedisys}"}
 
         async with httpx.AsyncClient(timeout=30) as client:

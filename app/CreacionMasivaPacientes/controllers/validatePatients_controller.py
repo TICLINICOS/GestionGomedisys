@@ -13,7 +13,7 @@ import httpx
 import app.Services.getTokenGomedisys_service as getTokenGomedisys_service
 
 # Configuraciones
-KEY_GOMEDISYS_TEST = config("KEY_GOMEDISYS_TEST")
+KEY_GOMEDISYS_PROD = config("KEY_GOMEDISYS_PROD")
 URL_BASE_GOMEDISYS = config("URL_BASE_GOMEDISYS")
 
 
@@ -28,14 +28,14 @@ async def validate_patients(tipo_documento: str, numero_documento: str):
             )
 
         data_patient = {
-            "keyWS": KEY_GOMEDISYS_TEST,
+            "keyWS": KEY_GOMEDISYS_PROD,
             "typeDocument": tipo_documento,
             "documentNumber": numero_documento,
         }
 
         conn = http.client.HTTPSConnection("servicesrest.gomedisys.com")
         payload = json.dumps({
-            "keyWS": KEY_GOMEDISYS_TEST,
+            "keyWS": KEY_GOMEDISYS_PROD,
             "typeDocument": tipo_documento,
             "documentNumber": numero_documento
         })

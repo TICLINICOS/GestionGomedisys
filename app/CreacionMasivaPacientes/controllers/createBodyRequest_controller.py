@@ -150,7 +150,7 @@ async def create_body_request(paciente_data):
             ptPoliticalDivision_dict.get(paciente_data["LUGARNACIMIENTO"], "")
         )
         #print(ptPoliticalDivision_HomeAddress.get(normalize_string(paciente_data["CIUDAD"]), ""))
-        
+
         """idHomeAddressPlace = str(
             ptPoliticalDivision_dict.get(normalize_string(paciente_data["CIUDAD"]), "")#["SEDEASIGNACION"], "")
         )"""

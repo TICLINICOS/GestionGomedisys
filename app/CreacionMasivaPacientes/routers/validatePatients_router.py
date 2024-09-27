@@ -4,7 +4,7 @@ Created on Thursday May 16 2024
 @author: Sebastian Suarez
 """
 """DESCOMENTAR PARA HACER LA PRUEBA UNITARIA"""
-"""
+
 from fastapi import FastAPI, APIRouter
 from app.CreacionMasivaPacientes.controllers.validatePatients_controller import (
     validate_patients
@@ -85,3 +85,4 @@ async def get_patient_info_route():
         "patients_found": patientsFound if patientsFound else "No se encontraron pacientes.",
         "patients_not_found": patientsNotFound if patientsNotFound else "!Todos los pacientes fueron encontrados."
     }
+"""

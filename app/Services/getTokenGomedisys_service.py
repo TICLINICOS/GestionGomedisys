@@ -118,6 +118,7 @@ async def get_token_gomedisys():
     URL_BASE_GOMEDISYS = config("URL_BASE_GOMEDISYS")
 
     try:
+        print("Token Nuevo")
         URL = f"{URL_BASE_GOMEDISYS}/token"
         data = {"Username": USERNAME_GOMEDISYS, "Password": PASSWORD_GOMEDISYS}
 
@@ -125,10 +126,10 @@ async def get_token_gomedisys():
             response = await client.post(URL, json=data)
             #print(response.json())
             token_gomedisys = response.json()
-            response.raise_for_status() # Directamente obteniendo el token
+            #response.raise_for_status() # Directamente obteniendo el token
 
             # Estimamos el tiempo de expiración del token (por ejemplo, 1 hora)
-            token_gomedisys_expires_at = time.time() + 3600  # 3600 segundos = 1 hora
+            token_gomedisys_expires_at = time.time() + 1800  # 3600 segundos = 1 hora
 
     except httpx.RequestError as e:
         raise HTTPException(status_code=500, detail=f"Error en la solicitud HTTP: {e}")

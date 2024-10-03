@@ -24,6 +24,11 @@ from app.ObtenerListasGomedisys.routers import getListsApiGomedisys_router
 #Validar Pacientes
 #-------------------------------------------------------------------------
 from app.CreacionMasivaPacientes.routers import validatePatients_router
+#-------------------------------------------------------------------------
+#Validar Pacientes
+#-------------------------------------------------------------------------
+from app.CreacionMasivaPacientes.routers import updatePatients_router
+
 # SERVER
 app = FastAPI()
 
@@ -60,6 +65,10 @@ app.include_router(getListsApiGomedisys_router.router)
 #Validar Info Paciente
 #-------------------------------------------------------------------------
 app.include_router(validatePatients_router.router)
+#-------------------------------------------------------------------------
+#Actualizar Paciente
+#-------------------------------------------------------------------------
+app.include_router(updatePatients_router.router)
 
 
 

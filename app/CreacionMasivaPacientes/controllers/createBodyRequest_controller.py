@@ -192,7 +192,7 @@ async def create_body_request(paciente_data):
 
     except Exception as e:
         # Imprimir el mensaje de error
-        print(f"Error en createBodyRequest_controller.py: {e}")
+        print(f"Error en createBodyRequest_controller.py para el documento {str(paciente_data['DOCUMENTO'])}: {e}")
 
         # Obtener la información del traceback
         traceback_info = traceback.extract_tb(sys.exc_info()[2])

@@ -16,8 +16,8 @@ router = APIRouter(prefix="/CreacionPacientes")
 
 @router.post("/validarPaciente")
 async def get_patient_info_route():
-    tipo_documento = "CC"
-    numero_documento = "23582375"
+    tipo_documento = "TI"
+    numero_documento = "1052843551"
     json_data = await validate_patients(tipo_documento=tipo_documento, numero_documento=numero_documento)
 
     if json_data:

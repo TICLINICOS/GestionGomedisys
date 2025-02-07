@@ -136,14 +136,14 @@ async def create_body_request(paciente_data):
         )
 
         # Obtener ID de la zona de residencia
-        id_zone_residence = next(
-            (
-                str(Zona["Id"])
-                for Zona in zones_residence
-                if "ZONA " + paciente_data["ZONA"] == normalize_string(Zona["Name"])
-            ),
-            "",
-        )
+        # id_zone_residence = next(
+        #     (
+        #         str(Zona["Id"])
+        #         for Zona in zones_residence
+        #         if "ZONA " + paciente_data["ZONA"] == normalize_string(Zona["Name"])
+        #     ),
+        #     "",
+        # )
 
         # Obtener ID de ciudades, país, barrio, etc.
         id_birth_place = str(
@@ -154,9 +154,12 @@ async def create_body_request(paciente_data):
         """idHomeAddressPlace = str(
             ptPoliticalDivision_dict.get(normalize_string(paciente_data["CIUDAD"]), "")#["SEDEASIGNACION"], "")
         )"""
-        id_office = str(
-            offices_dict.get("CLINICOS IPS SEDE "+ paciente_data["SEDEASIGNACION"], "")
-        )
+
+        # id_office = str(
+        #     offices_dict.get("CLINICOS IPS SEDE "+ str(paciente_data["SEDEASIGNACION"]), "")
+        # )
+
+
         #print("Entra: ",paciente_data["SEDEASIGNACION"],"id_office: ", id_office)
 
         # Construir el cuerpo del request para el paciente
@@ -176,15 +179,15 @@ async def create_body_request(paciente_data):
             "idScholarship": id_scholarship,
             "idOccupation": id_occupation,
             "idReligion": id_religion,
-            "idOffice": id_office,
+            "idOffice": int(paciente_data["SEDEASIGNACION"]),
             "telecom": str(paciente_data.get("FIJO", "")).split(".")[0] or str(paciente_data.get("CELULAR", "")).split(".")[0],
             "homeAddress": paciente_data.get("DIRECCIONCASA", "")+" "+ paciente_data.get("COMPLEMENTODIRECCION", ""),
             "idHomeAddressPlace": paciente_data["CIUDAD"],#idHomeAddressPlace
             "email": paciente_data.get("EMAIL", ""),
             "isSMSEnable": "1",
             "isEmailEnable": "1" if paciente_data.get("EMAIL") else "0",
-            "idZone": id_zone_residence
-            #"idCareProvider": id_care_provider,
+            "idZone": int(paciente_data["ZONA"]),
+            "idCareProvider": int(paciente_data["ASEGURADOR"])
         }
         #body_request.append(paciente_body)
 

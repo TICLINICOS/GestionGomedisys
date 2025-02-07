@@ -1,4 +1,5 @@
 .env
 CargueMasivoGomedisys/
 .vscode/
+venv/
 __pycache__/
